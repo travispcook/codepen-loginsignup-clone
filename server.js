@@ -21,7 +21,7 @@ codepen.api.signup = function(user) {
 
 	var response = {
 		success: false,
-		error: ''
+		error: 'Thank you for signing up'
 	}
 
 	if (!user.name) {
@@ -81,7 +81,7 @@ codepen.api.login = function(user) {
 
 	var response = {
 		success: false,
-		error: ''
+		error: 'Thank you for logging in'
 	}
 
 	if (!user.username) {
@@ -98,7 +98,7 @@ codepen.api.login = function(user) {
 		if (user.username == stored_user.username && user.password == stored_user.password) {
 			console.log("success!");
 			response.success = true;
-			response.error = '';
+			response.error = 'Thank you for logging in';
 			return false;
 		}
 		response.error = 'No user found by that username/password';

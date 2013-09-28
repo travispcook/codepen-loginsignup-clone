@@ -4,7 +4,7 @@ body {
 	background: #333 url(img/classy_fabric.png);
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 	font-size: 13px;
-	padding-top: 195px;
+	padding-top: 60px;
 	height: 100%;
 	margin: 0;
 	color: white;
@@ -53,7 +53,7 @@ nav  a{
 	text-decoration: none;
 }
 
-nav a.active {
+.active {
 	color: white;
 	border-bottom: 2px solid white;
 	position: relative;
@@ -114,3 +114,4 @@ form button {
 	text-decoration: none !important;
 	cursor: pointer;
 }
+

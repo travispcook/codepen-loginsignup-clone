@@ -3,6 +3,7 @@
 	<head>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			codepen = window.codepen || {};
 			codepen.api = {};
@@ -19,21 +20,21 @@
 			<div class="form-modal">
 
 				<nav>
-					<a href="#" class="active">Login</a>
-					<a href="#">Sign Up</a>
+					<a href="#" class="active" id="login-button">Login</a>
+					<a href="#" id="signup-button">Sign Up</a>
 				</nav>
 
 				<div class="login-form">
 					<form class="signup">
 						<div class="form-row">
-							<label for="login-email-field">Email</label>
+							<label for="login-email-field">Username</label>
 							<input id="login-email-field" name="email" type="text" />
 						</div>
 						<div class="form-row">
 							<label for="login-password-field">Password</label>
 							<input id="login-password-field" name="password" type="password" />
 						</div>
-						<button>Log in</button>
+						<button id='login-btn'>Log in</button>
 					</form>
 				</div>
 
@@ -61,7 +62,7 @@
 							<label for="signup-password-field">Password Again</label>
 							<input id="signup-password-field" name="password" type="password" />
 						</div>
-						<button>Sign up</button>
+						<button id="signup-btn">Sign up</button>
 					</form>
 				</div>
 
