@@ -30,47 +30,81 @@ Reponse Objects:
 
 $('document').ready(function() {
 	
-	codepen.objects= {};
-	var newUser = {
-		username : null,
-		password : null,
-		email : null,
-		name : null
-	
-		setLogin : function(username, password) {
-			this.username = username;
-			this.password = password;
-		}
-		setSignup : function(name, email, username, password) {
-			this.name;
-			this.email;
-			this.username; 
-			this.password;
-		}
+	codepen.objects.User = {
+			username : null,
+			password : null,
+			email : null,
+			name : null,
 	};
+		
+	var newUser = Object.create(codepen.objects.User, {
+		firstname: {
+			writeable: true,
+			enumerable: true,
+			value ''
+		},
+		lastname: {
+			writeable: true,
+			enumerable: true,
+			value ''
+		}
+	});
+
+
+	// 			setLogin : function(username, password) {
+	// 				this.username = username;
+	// 				this.password = password;
+	// 			}
+	// 			setSignup : function(name, email, username, password) {
+	// 				this.name;
+	// 				this.email;
+	// 				this.username; 
+	// 				this.password;
+	// 			}
+	// 		}
+	// };
+
+
 //show/hide different fields on click
 	$('.signup-form').css("display","none");
+	//$('.signup-form').hide();
 
 	$('#signup-button').click(function(){
 		$('.signup-form').css('display','inline');
+		//$('.signup-form').show();
 		$('.login-form').css('display','none');
+		//$('.login-form').hide();
+		//$('.signup-form-btn').removeClass('active');
+		//$('.login-form-btn').addClass('active');
 	});
-	console.log("hi");
+	
 	$('#login-button').click(function(){
 		$('.login-form').css('display','inline');
+		//$('.signup-form').hide();
 		$('.signup-form').css('display','none');
+		//$('.login-form').show();
+		//$('.login-form-btn').removeClass('active');
+		//$('.signup-form-btn').addClass('active');
 	});
+
+	
+
+
   
 
 //login functions
 	$("#login-btn").click(function() {
+		//var loginUser = {};
+		//loginUser.password = $("#login-password-field").val();
+		//loginUser.username = $("#login-email-field").val();
+		//console.log((codepen.api.login(loginUser)));
+		//alert(codepen.api.login(loginUser).error);
 		var usernameinput = $("#login-email-field").val();
 		var passwordinput = $("#login-password-field").val();
 		var myUser = codepen.objects.newUser;
-		
-		myUser.setLogin(usernameinput,passwordinput);	
-		
 		var message = codepen.api.login(myUser);
+		//var myUser = Object.create(newUser); 
+		myUser.setLogin(usernameinput,passwordinput);
 		
 		alert(message['error']);
 
@@ -80,10 +114,25 @@ $('document').ready(function() {
 
 //signup functions
 	$("#signup-btn").click(function() {
+		//var signupUser = {};
+		//signupUser.name = $("#login-name-field").val();
+		//signupUser.email = $("#login-email-field").val();
+		//signupUser.password = $("#login-password-field").val();
+		//signupUser.username = $("#login-username-field").val();
+		//console.log((codepen.api.login(signupUser)));
+		//alert(codepen.api.signup(signupUser).error);
+		//var myUser = Object.create(newUser); 
+		if(response.success == true) {
+				$('.signup-form .form-feedback').html("you're signed up! Go login")
+		} else {
+				$('.signup-form .form-feedback').html(response.error);
+		}
+
 		var nameinput 		= $('#signup-name-field').val();
 		var emailinput 		= $('#signup-email-field').val();
 		var usernameinput 	= $('#signup-username-field').val();
 		var passwordinput 	= $('#signup-password-field').val();
+		
 		var myUser = codepen.objects.newUser; 
 		
 		myUser.setSignup(nameinput,emailinput,usernameinput,passwordinput);
@@ -92,6 +141,5 @@ $('document').ready(function() {
 
 		return false;
 	});
-
 
 });
